@@ -5,12 +5,53 @@
  */
 
 // @lc code=start
+function spiralOrder(matrix: number[][]): number[] {
+  let res: number[] = []
+  if (matrix.length === 0) return []
+  const width = matrix[0].length
+  const height = matrix.length
+  const count = width * height
+  let left = 0
+  let right = width - 1
+  let top = 0
+  let bottom = height - 1
+  while (res.length < count) {
+    for (let i = left; i <= right; i++) {
+      res.push(matrix[top][i])
+    }
+    top++
+    for (let i = top; i <= bottom; i++) {
+      res.push(matrix[i][right])
+    }
+    right--
+    if (res.length === count) break
+    for (let i = right; i >= left; i--) {
+      res.push(matrix[bottom][i])
+    }
+    bottom--
+    for (let i = bottom; i >= top; i--) {
+      res.push(matrix[i][left])
+    }
+    left++
+  }
+  return res
+}
+// @lc code=end
+/* 
+console.log(
+  spiralOrder([
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12]
+  ])
+)
+ */
 
 /**
  * @runtime Your runtime beats 75 % of typescript submissions
  * @memory Your memory usage beats 7.14 % of typescript submissions (40.3 MB)
  */
-function spiralOrder(matrix: number[][]): number[] {
+/* function spiralOrder(matrix: number[][]): number[] {
   //
   const result: Array<number> = []
 
@@ -76,14 +117,4 @@ function spiralOrder(matrix: number[][]): number[] {
     }
   }
   return result
-}
-// @lc code=end
-/* 
-console.log(
-  spiralOrder([
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12]
-  ])
-)
- */
+} */
