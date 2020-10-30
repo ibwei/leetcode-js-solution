@@ -11,7 +11,13 @@
  * @memory Your memory usage beats 18.75 % of typescript submissions (41.5 MB)
  */
 function searchRange(nums: number[], target: number): number[] {
-  let left = 0,
+  return (
+    nums.reduce((h, v, i) => (h[v] ? (h[v][1] = i) : (h[v] = [i, i]), h), {} as any)[target] || [
+      -1,
+      -1
+    ]
+  )
+  /* let left = 0,
     right = nums.length - 1
 
   while (left <= right) {
@@ -28,6 +34,6 @@ function searchRange(nums: number[], target: number): number[] {
       left = mid + 1
     }
   }
-  return [-1, -1]
+  return [-1, -1] */
 }
 // @lc code=end
