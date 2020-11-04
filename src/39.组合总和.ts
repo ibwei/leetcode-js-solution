@@ -29,7 +29,6 @@ function combinationSum(candidates: number[], target: number): number[][] {
       track.pop()
     }
   }
-
   trackBack([])
   return result
 }
